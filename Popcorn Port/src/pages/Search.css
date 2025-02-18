@@ -1,0 +1,36 @@
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+    font-size: 1.2rem;
+    gap: 5px;
+}
+
+.pagination .page-num{
+    padding: 17px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight:400 ;
+    
+}
+
+.pagination .page-num:hover{
+    background-color:hsl(215,84%,20%) ;
+}
+
+.pagination .active {
+    background-color:hsl(215,84%,20%) ;
+
+}
+
+
+
+@media screen and (max-width: 640px) {
+    .pagination{
+    font-size: 0.8rem;
+    gap: 2px;
+    display: none;
+    }
+}
