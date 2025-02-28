@@ -1,24 +1,14 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+kind: Service
+apiVersion: v1
 metadata:
-  name: argocd-ingress
-  namespace: argocd
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/backend-protocol: HTTPS
-    alb.ingress.kubernetes.io/conditions.argogrpc: |
-        [{"field":"http-header","httpHeaderConfig":{"httpHeaderName": "Content-Type", "values":["application/grpc"]}}]
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+  name: node-exporter
+  namespace: prometheus-node-exporter
 spec:
-  ingressClassName: alb
-  rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 80
+  selector:
+      app: node-exporter
+  ports:
+  - name: node-exporter
+    protocol: TCP
+    port: 9100
+    targetPort: 9100
+  type: NodePort
