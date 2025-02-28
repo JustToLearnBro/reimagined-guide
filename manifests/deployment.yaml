@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: super-sudoku
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: super-sudoku
+  template:
+    metadata:
+      labels:
+        app: super-sudoku
+    spec:
+      containers:
+      - name: super-sudoku
+        image: justfortask67/super-sudoku:latest
+        ports:
+        - containerPort: 80
