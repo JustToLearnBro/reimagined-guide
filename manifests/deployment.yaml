@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: super-sudoku
+  name: popcorn-port-app
+  labels:
+    app: popcorn-port-app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: super-sudoku
+      app: popcorn-port-app
   template:
     metadata:
       labels:
-        app: super-sudoku
+        app: popcorn-port-app
     spec:
       containers:
-      - name: super-sudoku
-        image: justfortask67/super-sudoku:latest
+      - name: popcorn-port-app
+        image: soumyaranjanswainteleglobal/popcorn-port-jenkins:latest
         ports:
         - containerPort: 80
