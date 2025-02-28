@@ -1,12 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: super-sudoku-service
+  name: popcorn-port-app
+  labels:
+    app: popcorn-port-app
 spec:
-  selector:
-    app: super-sudoku
+  type: NodePort
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: LoadBalancer
+  - port: 80
+    targetPort: 80
+    nodePort: 30007
+  selector:
+    app: popcorn-port-app
